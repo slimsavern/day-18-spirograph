@@ -1,16 +1,26 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import random
+import turtle as t
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+tim = t.Turtle()
+screen = t.Screen()
+t.colormode(255)
 
+tim.speed("fastest")
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return (r,g,b)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def draw_spirograph( size_of_gap ):
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    for _ in range(int(360/size_of_gap)):
+        tim.circle(100)
+        current_heading = tim.heading()
+        tim.setheading(current_heading + size_of_gap )
+        tim.pencolor(random_color())
+
+draw_spirograph(2)
+screen.exitonclick()
+
